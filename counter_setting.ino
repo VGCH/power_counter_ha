@@ -5,7 +5,7 @@ void tube_setting(){
     server.send(301);
     return;
   }
-  String html = "<html><head><meta charset=\"UTF-8\"><title>Кофигурация счетчика</title>";
+  String html = "<html><head><meta charset=\"UTF-8\"><title>Конфигурация счетчика</title>";
   html += "<link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />";
   html += "</head><body>";
   html += "<h2>Кофигурация счетчика</h2>";

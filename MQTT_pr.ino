@@ -3,8 +3,18 @@
 void MQTT_send_data(String topic, float data){
           String top  = settings.mqtt_topic;
                  top +="/"+ topic;
+         String input = settings.mqtt_serv;
+         int colonIndex = input.indexOf(':');
+         String ipAddress;
+         String port;
+
+        if (colonIndex != -1) {
+             ipAddress = input.substring(0, colonIndex);
+             port = input.substring(colonIndex + 1);
+          }
+       
   if(settings.mqtt_en && WiFi.status() == WL_CONNECTED){
-      client.setServer(settings.mqtt_serv, 1883);
+      client.setServer(ipAddress.c_str(), port.toInt());
       client.loop();
            if(client.connected()){
           count_rf = 0;

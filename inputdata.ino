@@ -14,7 +14,16 @@ void indata(){
         settings.mqtt_en = true;
         save_config();
         msg +="<text>Передача данных включена!</text>";
-        client.setServer(settings.mqtt_serv, 1883);
+         String input = settings.mqtt_serv;
+         int colonIndex = input.indexOf(':');
+         String ipAddress;
+         String port;
+
+        if (colonIndex != -1) {
+             ipAddress = input.substring(0, colonIndex);
+             port = input.substring(colonIndex + 1);
+          }
+        client.setServer(ipAddress.c_str(), port.toInt());
         }else if(server.arg("switch")=="off"){
         settings.mqtt_en = false;
         save_config();
